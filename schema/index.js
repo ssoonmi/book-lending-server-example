@@ -41,6 +41,7 @@ const typeDefs = `
     _id: ID!
     username: String!
     token: String
+    loggedIn: Boolean
   }
 `;
 
