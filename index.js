@@ -18,6 +18,11 @@ mongoose
   .then(() => console.log('Connected to MongoDB successfully'))
   .catch(err => console.log(err));
 
+if (process.env.NODE_ENV !== 'production') {
+  const cors = require('cors');
+  app.use(cors({ origin: 'http://localhost:3000' }));
+}
+
 const morgan = require("morgan");
 app.use(morgan("dev"));
 

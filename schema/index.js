@@ -26,6 +26,8 @@ const typeDefs = `
     books: [Book]
     book(_id: ID!): Book
     me: User
+    authors: [Author]
+    author(_id: ID!): Author
   }
   type Mutation {
     borrowBooks(bookIds: [ID]!): BookUpdateResponse!
@@ -56,6 +58,12 @@ const resolvers = {
     me(_, __, context) {
       // context.user is the logged-in user
       return context.user;
+    },
+    authors(_, __) {
+      return Author.find({});
+    },
+    author(_, { _id }) {
+      return Author.findById(_id);
     }
   },
   Mutation: {
